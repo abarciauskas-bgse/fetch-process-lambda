@@ -13,9 +13,9 @@ def lambda_handler(event, context):
     # Return a list of files
     try:
         parallel_wget.parallel_wget(
-           host=config['provider']['host'],
-           path=config['collection']['provider_path'],
-           files=event['input']
+           host=config['host'],
+           path=config['path'],
+           files=event['files']
         )
         result_files = process_files()
         # Upload to S3
