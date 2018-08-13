@@ -13,3 +13,4 @@ requirements: dist requirements.txt
 
 fetch-process: requirements
 	cp lambda_function.py ./dist/
+	cp process_function.txt ./dist/
