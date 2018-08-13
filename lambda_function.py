@@ -2,13 +2,14 @@ import parallel_wget
 import boto3
 import json
 import os
+from run_cumulus_task import run_cumulus_task
 
 process_function = open('process_function.txt').read().replace('\n', '')
 process_files = __import__(process_function)
 
 client = boto3.client('s3')
 
-def lambda_handler(event, context):
+def task(event, context):
     config = event['config']
     # Return a list of files
     try:
@@ -33,3 +34,7 @@ def lambda_handler(event, context):
         print(err)
     print('processing complete')
     return {'messsage': 'processing complete'}
+
+def lambda_handler(event, context):
+    return run_cumulus_task(task, event, context)
+
