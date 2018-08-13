@@ -1,2 +1,4 @@
 parallel_wget==0.0.10
 cumulus-message-adapter-python
+numpy
+pandas
