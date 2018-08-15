@@ -29,6 +29,7 @@ def task(event, context):
         file_prefix = 'processed_data/'
         for file in  result_files:
           res = client.put_object(
+            ACL = 'public-read',
             Bucket = dest_bucket,
             Key = '{0}{1}'.format(file_prefix, file.split('/')[-1]),
             Body = open(file, 'r').read())
